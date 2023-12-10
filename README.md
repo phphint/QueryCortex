@@ -1,60 +1,59 @@
 # QueryCortex.com Architecture
 
 ## Overview
-This document outlines the high-level architecture for QueryCortex.com, an AI-based platform for interviewing candidates based on their resumes.
+This document details the architecture for QueryCortex.com, an AI-based platform designed for conducting and analyzing candidate interviews using voice-to-text and text-to-voice technologies, based on resumes and job descriptions.
 
 ## Architecture Components
 
 ### Root
-The central hub of the application.
+Central node of the application architecture.
 
 #### Resume Parsing
-- **Third-Party Resume Parsing Service (e.g., Sovren, RChilli)**
+- **Profilytics.com API**
   - Extract candidate information and skills from resumes
 
-#### AI-Driven Interview Generation
-- **Custom AI Model (e.g., GPT-3, BERT)**
-  - Generate relevant interview questions based on resume data
+#### Interview Question and Answer Database
+- **Local Database (MongoDB)**
+  - Store pre-defined interview questions and answers
 
 #### Candidate Interaction Interface
-- **Chatbot Interface (e.g., Dialogflow, Microsoft Bot Framework)**
-  - Conduct interviews with candidates
-  - Collect candidate responses
+- **Voice-to-Text and Text-to-Voice Technologies**
+  - Conduct interviews over the phone
+  - Convert voice to text for analysis and text to voice for interaction
 
-#### Response Analysis and Evaluation
-- **NLP Processing (e.g., OpenAI API, IBM Watson)**
-  - Analyze candidate responses
-  - Evaluate against job requirements
+#### AI-Based Response and Performance Analysis
+- **External AI API (e.g., OpenAI)**
+  - Analyze candidate responses for correctness
+  - Determine appropriate tests based on job description and resume
 
-#### Integration with Job Platforms
-- **API Integration with Job Boards (e.g., LinkedIn, Indeed)**
-  - Fetch job descriptions
-  - Post job openings
-  - Retrieve candidate applications
+#### AI-Driven Test Administration
+- **Custom AI Logic (Node.js / FastAPI)**
+  - Decide which tests to administer based on AI analysis
 
 #### Data Storage and Management
-- **Cloud Database Service (e.g., AWS RDS, MongoDB Atlas)**
-  - Store candidate data, interview transcripts, job descriptions
+- **Local MongoDB Instance**
+  - Store candidate data, interview transcripts, test results
 
 #### User Management and Authentication
-- **Identity Management Service (e.g., Auth0, Okta)**
-  - Manage user accounts and authentication
+- **OAuth and Social Logins (e.g., Google, LinkedIn)**
+  - Manage user authentication
 
 #### Application Backend
-- **Primary Server (Node.js / Python)**
-  - Manage application logic
-  - API coordination and integration
+- **Node.js (Primary Backend)**
+  - Handle application logic and data orchestration
+- **FastAPI (Python)**
+  - Handle CPU-intensive analysis and AI interactions
 
 #### Frontend Application
-- **Web Application (React, Angular)**
+- **Web Application (React)**
   - User interface for candidates and recruiters
 
-#### Monitoring and Maintenance
-- **Cloud Monitoring Tools (e.g., Datadog, New Relic)**
-  - Monitor system performance
-  - Alerting and Reporting
+#### Containerization and Deployment
+- **Docker and Docker Compose**
+  - Containerize all application components
+  - Deploy as a single stack
 
-#### Networking and Security
-- **Managed Security Services (e.g., Cloudflare)**
-  - Secure application endpoints
-  - Protect against common web threats
+#### Monitoring and Maintenance
+- **Self-Hosted Monitoring Tools (e.g., Prometheus, Grafana)**
+  - Monitor application performance
+  - Alerting and system health reporting
