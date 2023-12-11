@@ -120,3 +120,64 @@ This document outlines the architecture integrating WebRTC with FastAPI, OpenAI,
 
 ## Conclusion
 This architecture leverages both Node.js and FastAPI, ensuring efficient real-time audio processing, AI interactions, and data management for a seamless AI-driven interview platform.
+
+# QueryCortex.com Technology Stack
+
+## Node.js Libraries
+
+### WebRTC Handling
+- `node-webrtc` (wrtc): A Node.js package to access WebRTC functionalities.
+- `socket.io`: For real-time bidirectional event-based communication.
+
+### Backend and API Management
+- `express`: Fast, unopinionated, minimalist web framework for Node.js.
+- `mongoose`: MongoDB object modeling tool designed to work in an asynchronous environment.
+
+### File Storage Interaction (MinIO)
+- `minio`: MinIO Client SDK for JavaScript.
+
+## Python Libraries (For FastAPI)
+
+### FastAPI Framework
+- `fastapi`: A modern, fast (high-performance), web framework for building APIs.
+
+### Asynchronous Tasks
+- `uvicorn`: An ASGI web server implementation for Python.
+- `gunicorn`: WSGI HTTP Server for UNIX, used to run Python web applications.
+
+### Data Processing and AI Interactions
+- `httpx`: A fully featured HTTP client for Python 3, which provides async capabilities.
+
+## Third-Party Services
+
+### Voice-to-Text Conversion
+- Google Cloud Speech-to-Text: Offers real-time speech recognition.
+- IBM Watson Speech to Text: Provides audio transcription services.
+
+### Text-to-Voice Conversion
+- Google Cloud Text-to-Speech: Converts text into natural-sounding speech.
+- Amazon Polly: Turns text into lifelike speech.
+
+### AI Analysis (OpenAI)
+- OpenAI API: Provides access to GPT-3 for natural language processing tasks.
+
+### Voice Activity Detection (VAD)
+- Utilize built-in VAD features of real-time speech recognition services like Google Cloud Speech-to-Text or IBM Watson Speech to Text.
+
+## Integration and Deployment
+
+### Docker
+- To containerize the Node.js and Python (FastAPI) applications along with MongoDB and MinIO.
+
+### Docker Compose
+- For defining and running multi-container Docker applications.
+
+## System Considerations
+
+### Scalability and Resource Management
+- Focus on the scalability of the Node.js application and the CPU-intensive tasks managed by FastAPI.
+
+### Latency
+- Aim to minimize latency in the processing and conversion of audio data to ensure a seamless user experience.
+
+
