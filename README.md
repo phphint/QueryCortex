@@ -1,59 +1,52 @@
-# QueryCortex.com Architecture
+# QueryCortex.com MVP Architecture
 
 ## Overview
-This document details the architecture for QueryCortex.com, an AI-based platform designed for conducting and analyzing candidate interviews using voice-to-text and text-to-voice technologies, based on resumes and job descriptions.
+This document outlines the MVP architecture for QueryCortex.com, a web-based AI platform for conducting and analyzing candidate interviews using WebRTC and OpenAI.
 
-## Architecture Components
+## Architecture Components for MVP
 
-### Root
-Central node of the application architecture.
+### 1. Resume Parsing
+- **Profilytics.com API**: 
+  - Purpose: Extract candidate information and skills from resumes.
 
-#### Resume Parsing
-- **Profilytics.com API**
-  - Extract candidate information and skills from resumes
+### 2. Interview Question and Answer Database
+- **Local Database (MongoDB)**: 
+  - Purpose: Store predefined interview questions and answers.
 
-#### Interview Question and Answer Database
-- **Local Database (MongoDB)**
-  - Store pre-defined interview questions and answers
+### 3. Candidate Interaction Interface
+- **WebRTC for Audio Communication**: 
+  - Purpose: Conduct interviews via web-based real-time audio.
+  - Functionality: Stream audio for voice-to-text processing.
 
-#### Candidate Interaction Interface
-- **Voice-to-Text and Text-to-Voice Technologies**
-  - Conduct interviews over the phone
-  - Convert voice to text for analysis and text to voice for interaction
+### 4. AI-Based Response and Performance Analysis
+- **External AI API (OpenAI)**: 
+  - Purpose: Analyze candidate's spoken responses for correctness using voice-to-text.
+  - Functionality: Assess responses against the job description and resume data.
 
-#### AI-Based Response and Performance Analysis
-- **External AI API (e.g., OpenAI)**
-  - Analyze candidate responses for correctness
-  - Determine appropriate tests based on job description and resume
+### 5. AI-Driven Test Administration
+- **Node.js Backend (Maintain FastAPI for Future Expansion)**: 
+  - Purpose: Utilize Node.js for handling current AI logic and data processing.
+  - Note: Retain FastAPI framework for potential future use with custom AI models.
 
-#### AI-Driven Test Administration
-- **Custom AI Logic (Node.js / FastAPI)**
-  - Decide which tests to administer based on AI analysis
+### 6. Data Storage and Management
+- **Local MongoDB Instance**: 
+  - Purpose: Store interview data, including transcripts and analysis results.
 
-#### Data Storage and Management
-- **Local MongoDB Instance**
-  - Store candidate data, interview transcripts, test results
+### 7. Application Backend
+- **Node.js (Primary Backend)**: 
+  - Purpose: Manage application logic, API calls to OpenAI, and orchestration with WebRTC.
 
-#### User Management and Authentication
-- **OAuth and Social Logins (e.g., Google, LinkedIn)**
-  - Manage user authentication
+### 8. Frontend Application
+- **Web Application (React)**: 
+  - Purpose: Interactive interface for conducting and managing interviews.
 
-#### Application Backend
-- **Node.js (Primary Backend)**
-  - Handle application logic and data orchestration
-- **FastAPI (Python)**
-  - Handle CPU-intensive analysis and AI interactions
+### 9. Containerization and Deployment
+- **Docker and Docker Compose**: 
+  - Purpose: Efficient deployment and scaling of the application components.
 
-#### Frontend Application
-- **Web Application (React)**
-  - User interface for candidates and recruiters
+### 10. Monitoring and Maintenance
+- **Self-Hosted Monitoring Tools (e.g., Prometheus, Grafana)**: 
+  - Purpose: Ensure optimal performance and health of the application.
 
-#### Containerization and Deployment
-- **Docker and Docker Compose**
-  - Containerize all application components
-  - Deploy as a single stack
-
-#### Monitoring and Maintenance
-- **Self-Hosted Monitoring Tools (e.g., Prometheus, Grafana)**
-  - Monitor application performance
-  - Alerting and system health reporting
+## Conclusion for MVP
+The MVP of QueryCortex.com focuses on establishing core functionalities with WebRTC for audio-based interviews and leveraging OpenAI for intelligent response analysis, setting the foundation for a scalable, AI-driven interview platform.
