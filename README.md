@@ -1,3 +1,47 @@
+# QueryCortex.com Project Description
+
+**QueryCortex.com** represents a cutting-edge, web-based AI platform designed to revolutionize the process of conducting and analyzing candidate interviews. This comprehensive document outlines the MVP architecture for QueryCortex.com, utilizing the power of WebRTC and OpenAI to deliver a seamless and efficient interview experience.
+
+## Core Components of QueryCortex.com's MVP
+
+### Profilytics.com API Integration
+- **Purpose**: Efficient resume parsing, extracting crucial candidate information and skills.
+
+### WebRTC for Real-Time Audio Communication
+- **Functionality**: Conduct interviews via web-based real-time audio.
+- **Integration**: Stream audio for essential voice-to-text processing.
+
+### AI-Based Response and Performance Analysis
+- **Technology**: Utilizing external AI APIs like OpenAI.
+- **Functionality**: Analyze candidates' spoken responses for accuracy and relevance.
+
+### AI-Driven Test Administration
+- **Backend**: Managed by a Node.js Backend.
+- **Flexibility**: Potential for future expansion using FastAPI.
+
+### Data Storage and Management
+- **Database**: Local MongoDB instance.
+- **Purpose**: Secure and efficient storage of interview data, including transcripts and analysis results.
+
+### Application Backend
+- **Technology**: Primarily powered by Node.js.
+- **Role**: Orchestrating the entire interview process from API calls to WebRTC management.
+
+### Frontend Application
+- **Development**: Web application developed in React.
+- **User Experience**: Interactive and user-friendly interface for both candidates and recruiters.
+
+### Containerization and Deployment
+- **Tools**: Docker and Docker Compose.
+- **Purpose**: Streamlined deployment and scalability.
+
+### Monitoring and Maintenance
+- **Tools**: Self-hosted monitoring tools like Prometheus and Grafana.
+- **Objective**: Ensuring optimal performance and health of the application.
+
+**In conclusion**, the architecture of QueryCortex.com is a testament to our commitment to innovation and efficiency in the AI-driven interview process. Leveraging technologies like Node.js, FastAPI, and third-party services such as Google Cloud Speech-to-Text and Amazon Polly, we have created a platform that is not only scalable but also capable of minimizing latency in audio processing and AI response generation. This makes QueryCortex.com an ideal solution for organizations seeking a seamless, AI-driven interview platform.
+
+
 # QueryCortex.com MVP Architecture
 
 ## Overview
