@@ -50,3 +50,73 @@ This document outlines the MVP architecture for QueryCortex.com, a web-based AI 
 
 ## Conclusion for MVP
 The MVP of QueryCortex.com focuses on establishing core functionalities with WebRTC for audio-based interviews and leveraging OpenAI for intelligent response analysis, setting the foundation for a scalable, AI-driven interview platform.
+
+# QueryCortex.com Architecture Overview
+
+## Overview
+This document outlines the architecture integrating WebRTC with FastAPI, OpenAI, and other components, focusing on efficient data flow and resource management.
+
+## Architecture Components
+
+### 1. WebRTC for Real-Time Audio Communication
+- **Function**: 
+  - Handles real-time audio communication with candidates.
+- **Integration**: 
+  - WebRTC streams are managed in the browser and sent to the Node.js backend.
+
+### 2. Voice Activity Detection (VAD)
+- **Placement**: 
+  - Ideally integrated within the Node.js layer for immediate processing of audio streams.
+- **Function**: 
+  - Detects when the user starts and stops speaking during the WebRTC session.
+
+### 3. Voice-to-Text Conversion
+- **Service Choice**: 
+  - Can use external APIs or custom solutions.
+- **Handling**: 
+  - Managed by FastAPI for CPU-intensive tasks. Audio stream from WebRTC is sent to FastAPI for conversion.
+
+### 4. Interaction with OpenAI for AI-Based Analysis
+- **FastAPI Endpoint**: 
+  - Receives transcribed text from the voice-to-text service.
+- **Function**: 
+  - Sends text to OpenAI API for analysis and receives AI-generated responses.
+
+### 5. Text-to-Voice Conversion
+- **Service**: 
+  - Converts AI-generated text responses back into speech.
+- **Handling**: 
+  - Managed by FastAPI for efficiency.
+
+### 6. Node.js Backend
+- **Role**: 
+  - Central orchestrator, managing WebRTC sessions, VAD data, and coordination between frontend, FastAPI, and other services.
+- **Database Interaction**: 
+  - Interfaces with local MongoDB instance for data storage.
+
+### 7. MinIO File Storage
+- **Integration**: 
+  - Node.js and FastAPI interact with MinIO for storing and retrieving audio files, transcripts, and other data.
+
+### 8. Data Flow
+- **From WebRTC to AI Analysis**: 
+  - Audio data flows from WebRTC to Node.js, then to FastAPI for voice-to-text conversion, and to OpenAI.
+- **Database and File Storage**: 
+  - All components interact with MongoDB and MinIO, facilitated by Node.js backend.
+
+### 9. Containerization and Deployment
+- **Docker Containers**: 
+  - Each component (Node.js, FastAPI, MongoDB, MinIO) is containerized.
+- **Docker Compose**: 
+  - Manages deployment and orchestration.
+
+## System Considerations
+- **Scalability**: 
+  - FastAPI's asynchronous capabilities are key for CPU-intensive tasks.
+- **Resource Management**: 
+  - Important for transcription and text-to-speech services.
+- **Latency**: 
+  - Minimize latency in audio processing and AI response generation.
+
+## Conclusion
+This architecture leverages both Node.js and FastAPI, ensuring efficient real-time audio processing, AI interactions, and data management for a seamless AI-driven interview platform.
